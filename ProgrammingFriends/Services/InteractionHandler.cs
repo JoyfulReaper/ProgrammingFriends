@@ -42,7 +42,7 @@ public class InteractionHandler : IDisposable, IInteractionHandler
         //_interactionService.ContextCommandExecuted += ContextCommandExcuted;
         //_interactionService.ComponentCommandExecuted += ComponentCommentExecuted;
         //_interactionService.InteractionExecuted += InteractionExcuted;
-        //_interactionService.Log += _loggingService.LogAsync;
+        _interactionService.Log += _loggingService.LogAsync;
 
 
         await _interactionService.AddModulesAsync(Assembly.GetEntryAssembly(), _serviceProvider);
@@ -72,6 +72,8 @@ public class InteractionHandler : IDisposable, IInteractionHandler
         IInteractionContext context,
         IResult result)
     {
+        // This runs when a SlashCommand is used
+
         //if (!result.IsSuccess)
         //{
         //    switch (result.Error)

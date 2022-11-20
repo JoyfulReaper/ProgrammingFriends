@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgrammingFriends.Interactions;
+namespace ProgrammingFriends.Interactions.SlashCommands;
 public class Server : InteractionModuleBase<SocketInteractionContext>
 {
     [RequireContext(ContextType.Guild)]
