@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ProgrammingFriends.Services;
-public class InteractionHandler
+public class InteractionHandler : IDisposable
 {
     private readonly InteractionService _interactionService;
     private readonly DiscordSocketClient _client;

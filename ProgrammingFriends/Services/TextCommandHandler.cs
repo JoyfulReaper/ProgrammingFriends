@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ProgrammingFriends.Services;
-public class TextCommandHandler
+public class TextCommandHandler : IDisposable
 {
     private readonly DiscordSocketClient _client;
     private readonly CommandService _commandService;
@@ -38,8 +38,6 @@ public class TextCommandHandler
         }
 
         _client.MessageReceived += HandleCommandAsync;
-        _client.UserLeft += OnUserLeft;
-        _client.UserJoined += OnUserJoined;
         _commandService.Log += _loggingService.LogAsync;
         _commandService.CommandExecuted += CommandExecutedAsync;
 
@@ -86,23 +84,9 @@ public class TextCommandHandler
         // Runs when text command executes
     }
 
-    private Task OnUserJoined(SocketGuildUser user)
-    {
-        // Runs when user joins
-        return Task.CompletedTask;
-    }
-
-    private Task OnUserLeft(SocketGuild guild, SocketUser user)
-    {
-        //Runs when user leaves
-        return Task.CompletedTask;
-    }
-
     public void Dispose()
     {
         _client.MessageReceived -= HandleCommandAsync;
-        _client.UserLeft -= OnUserLeft;
-        _client.UserJoined -= OnUserJoined;
         _commandService.Log -= _loggingService.LogAsync;
         _commandService.CommandExecuted -= CommandExecutedAsync;
     }

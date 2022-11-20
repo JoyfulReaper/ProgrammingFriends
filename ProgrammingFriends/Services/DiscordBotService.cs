@@ -26,6 +26,8 @@ public class DiscordBotService : IDiscordBotService
         _interactionHandler = interactionHandler;
         _discordSocketClient.Log += _loggingService.LogAsync;
         _discordSocketClient.Ready += OnReady;
+        _discordSocketClient.UserLeft += OnUserLeft;
+        _discordSocketClient.UserJoined += OnUserJoined;
     }
 
     public async Task StartAsync()
@@ -45,5 +47,17 @@ public class DiscordBotService : IDiscordBotService
     {
         await _textCommandHandler.InitializeAsync();
         await _interactionHandler.InitializeAsync();
+    }
+
+    private Task OnUserJoined(SocketGuildUser user)
+    {
+        // Runs when user joins
+        return Task.CompletedTask;
+    }
+
+    private Task OnUserLeft(SocketGuild guild, SocketUser user)
+    {
+        //Runs when user leaves
+        return Task.CompletedTask;
     }
 }
