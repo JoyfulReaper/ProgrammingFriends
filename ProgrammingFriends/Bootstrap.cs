@@ -29,7 +29,7 @@ internal class Bootstrap
             LogLevel = LogSeverity.Verbose,
             MessageCacheSize = 500,
             AlwaysDownloadUsers = true,
-            GatewayIntents = GatewayIntents.AllUnprivileged,
+            GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.MessageContent,
         };
 
         var commandServiceConfig = new CommandServiceConfig
@@ -47,6 +47,9 @@ internal class Bootstrap
         services.AddSingleton(commandService);
         services.AddSingleton(interactionService);
         services.AddSingleton<IDiscordBotService, DiscordBotService>();
+        services.AddSingleton<ILoggingService, LoggingService>();
+        services.AddSingleton<TextCommandHandler>();
+        services.AddSingleton<InteractionHandler>();
 
         return services.BuildServiceProvider();
     }

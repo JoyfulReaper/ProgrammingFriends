@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProgrammingFriends.Services.Interfaces;
 
-internal interface IDiscordBotService
+public interface IDiscordBotService
 {
     Task StartAsync();
     Task StopAsync();
