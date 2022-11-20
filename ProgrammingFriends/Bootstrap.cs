@@ -1,11 +1,6 @@
 ﻿using Discord.WebSocket;
 using Discord;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Discord.Interactions;
 using Discord.Commands;
 using ProgrammingFriends.Services.Interfaces;
@@ -48,8 +43,8 @@ internal class Bootstrap
         services.AddSingleton(interactionService);
         services.AddSingleton<IDiscordBotService, DiscordBotService>();
         services.AddSingleton<ILoggingService, LoggingService>();
-        services.AddSingleton<TextCommandHandler>();
-        services.AddSingleton<InteractionHandler>();
+        services.AddSingleton<ITextCommandHandler, TextCommandHandler>();
+        services.AddSingleton<IInteractionHandler, InteractionHandler>();
 
         return services.BuildServiceProvider();
     }

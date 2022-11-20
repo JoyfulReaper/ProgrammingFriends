@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ProgrammingFriends.Services;
-public class TextCommandHandler : IDisposable
+public class TextCommandHandler : IDisposable, ITextCommandHandler
 {
     private readonly DiscordSocketClient _client;
     private readonly CommandService _commandService;
@@ -32,7 +32,7 @@ public class TextCommandHandler : IDisposable
 
     public async Task InitializeAsync()
     {
-        if(_initialized)
+        if (_initialized)
         {
             return;
         }

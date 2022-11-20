@@ -12,13 +12,13 @@ public class DiscordBotService : IDiscordBotService
 {
     private readonly DiscordSocketClient _discordSocketClient;
     private readonly ILoggingService _loggingService;
-    private readonly TextCommandHandler _textCommandHandler;
-    private readonly InteractionHandler _interactionHandler;
+    private readonly ITextCommandHandler _textCommandHandler;
+    private readonly IInteractionHandler _interactionHandler;
 
     public DiscordBotService(DiscordSocketClient discordSocketClient,
         ILoggingService loggingService,
-        TextCommandHandler textCommandHandler,
-        InteractionHandler interactionHandler)
+        ITextCommandHandler textCommandHandler,
+        IInteractionHandler interactionHandler)
     {
         _discordSocketClient = discordSocketClient;
         _loggingService = loggingService;
